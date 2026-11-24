@@ -38,10 +38,10 @@ bacedf["Lipinski"] = (
 print(f"Total passing Lipinski filter: {bacedf["Lipinski"].sum()}")
 
 #seeing which condition fails most:
-failmw = (bacedf["Molecular_weight"] > 500).sum()
-failalogp = (bacedf["LogP"] > 5).sum()
-failhbd = (bacedf["HBDonors"] > 5).sum()
-failhba = (bacedf["HBAcceptors"] > 10).sum()
+failmw = (bacedf["MW"] > 500).sum()
+failalogp = (bacedf["AlogP"] > 5).sum()
+failhbd = (bacedf["HBD"] > 5).sum()
+failhba = (bacedf["HBA"] > 10).sum()
 print(f"Failed Molecular weight (>500): {failmw}")
 print(f"Failed LogP (>5): {failalogp}")
 print(f"Failed HBDonnors (>5): {failhbd}")

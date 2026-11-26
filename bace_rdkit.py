@@ -4,7 +4,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors
 from rdkit.Chem import Draw
 import warnings
-warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)
+#warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)
 
 bacedf = pd.read_csv("bace_df_revised.csv")
 
@@ -12,12 +12,23 @@ bacedf["ROMol"] = bacedf["mol"].apply(Chem.MolFromSmiles)
 print(bacedf["ROMol"].head())
 #droping rows with invalid smiles 
 bacedf = bacedf.dropna(subset=["ROMol"])
+print(f"The number of molecules before canonicalization is: {bacedf.shape[0]}")
+bacedf = bacedf.copy()
+#Canonicalization and duplicates check:
+bacedf["Canon_SMILES"] = bacedf["ROMol"].apply(Chem.MolToSmiles)
+n_duplicates = bacedf["Canon_SMILES"].duplicated().sum()
+print(f"The number of molecules with same canonical SMILES is: {n_duplicates}")
+#Dropping duplicates with the same canon smiles:
+bacedf = bacedf.drop_duplicates(subset=["Canon_SMILES"])
+
+
 print(f"The final number of molecules is: {bacedf.shape[0]}")
 #drawing the first 8 molecules:
 mols = bacedf["ROMol"].iloc[:8].to_list()
 img1 = Draw.MolsToImage(mols)
 img1.show()
 
+bacedf = bacedf.copy()
 
 """Computing the values of some descriptors for the molecules
 and comparing their values with the data's original values"""
@@ -67,7 +78,7 @@ bacedf["TPSA"] = bacedf["ROMol"].apply(Descriptors.TPSA)
 bacedf["Veber_rdkit_pass"] = ((bacedf["Rot_Bonds_Num"]<= 10) & (bacedf["TPSA"]<= 140))
 
 #Comparing the number of molecules that passed each filter:
-print(bacedf["Veber_org_pass"].sum(), bacedf["Veber_rdkit_pass"].sum())
+print(f"Number of passing mols using original PSA :{bacedf["Veber_org_pass"].sum()}", f"While the number of mols that passed using the computed PSA is:{bacedf["Veber_rdkit_pass"].sum()}")
 
 veber_pass_rates = bacedf.groupby("Class")["Veber_org_pass"].mean()*100
 print(f"The pass rate for each class is:\n {veber_pass_rates}")

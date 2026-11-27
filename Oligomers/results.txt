@@ -1,0 +1,82 @@
+This dataframe has 20609 rows and 2 columns.
+(20609, 3)
+The number of duplicated canon SMILES is: 191
+(20418, 3)
+             label      MW  LogP  ...  Num_Rot_Bonds  Num_Heavy_Atoms  Num_Atoms
+0          plastic  259.22  5.20  ...              7               16         36
+1          peptide  556.66  1.45  ...             14               40         80
+2  oligosaccharide  665.60 -9.78  ...             10               45         88
+3          plastic  259.22  5.20  ...              7               16         36
+4          plastic  329.35  6.83  ...             11               21         51
+
+[5 rows x 10 columns]
+                 label       MW  ...  Num_Heavy_Atoms  Num_Atoms
+20604          plastic   301.73  ...               17         44
+20605  oligosaccharide   987.91  ...               67        132
+20606  oligosaccharide  1150.05  ...               78        153
+20607          peptide   951.14  ...               67        121
+20608          plastic   260.89  ...               17         50
+
+[5 rows x 10 columns]
+Summary statistics for molecular weight per label:
+                    mean  median     min      max     std
+label                                                   
+oligosaccharide  931.47  987.91  501.49  1153.00  183.25
+peptide          615.66  614.70  189.17  1093.22  179.73
+plastic          349.01  350.59   86.18   689.43   86.28
+The average TPSA per label:
+ label
+oligosaccharide    486.62
+peptide            266.58
+plastic              0.00
+Name: TPSA, dtype: float64
+The average LogP per label:
+ label
+oligosaccharide   -13.70
+peptide            -2.09
+plastic             7.81
+Name: LogP, dtype: float64
+   amide  hydroxyl  benzene  halogene  carboxylic_acid
+0  False     False     True      True            False
+1   True      True     True     False             True
+2  False      True    False     False            False
+3  False     False     True      True            False
+4  False     False     True      True            False
+5  False      True    False     False            False
+6  False      True    False     False            False
+7  False     False    False      True            False
+8   True      True     True     False             True
+9   True      True     True     False             True
+The fraction of molecules having the amide group is:
+label
+oligosaccharide    0.0
+peptide            1.0
+plastic            0.0
+Name: amide, dtype: float64
+The fraction of molecules having the hydroxyl group is:
+label
+oligosaccharide    1.0
+peptide            1.0
+plastic            0.0
+Name: hydroxyl, dtype: float64
+The fraction of molecules having the benzene group is:
+label
+oligosaccharide    0.00
+peptide            0.54
+plastic            0.73
+Name: benzene, dtype: float64
+The fraction of molecules having the halogene group is:
+label
+oligosaccharide    0.00
+peptide            0.00
+plastic            0.74
+Name: halogene, dtype: float64
+The fraction of molecules having the carboxylic_acid group is:
+label
+oligosaccharide    0.0
+peptide            1.0
+plastic            0.0
+Name: carboxylic_acid, dtype: float64
+The oligosaccharide df has 6949 molecules.
+The peptide df has 6868 molecules.
+The plastic df has 6601 molecules.

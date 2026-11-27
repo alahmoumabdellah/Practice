@@ -1,0 +1,18 @@
+The molecular weight: 144.18
+The lipophilicity factor: 2.11
+The TPSA: 24.39
+The number of hydrogen bond donors: 1
+The number of hydrogen bond acceptors: 2
+The number of rotatable bonds: 0
+The total number of atoms: 11
+Viscaaaaaaaaaaaaaaa barcaaaaaaaaaaaaa
+Y visca catalunya
+IUPAC name: 1H-1,2-benzodiazepine
+IUPAC systematic name: 1H-1,2-benzodiazepine
+Molecular formula: C9H8N2
+MW: 144.17
+HBA: 2
+HBD: 1
+TPSA: 24.4
+Def stereo count: 0
+UDef stereo count: 0
